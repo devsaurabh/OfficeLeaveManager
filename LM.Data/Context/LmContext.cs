@@ -18,6 +18,8 @@ namespace LM.Data.Context
         {
             modelBuilder.Configurations.Add(new EmployeeConfiguration());
             modelBuilder.Configurations.Add(new EmployeeLeaveConfiguration());
+            modelBuilder.Configurations.Add(new MonthlyLeaveConfiguration());
+            modelBuilder.Configurations.Add(new LeaveConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
