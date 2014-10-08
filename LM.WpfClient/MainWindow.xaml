@@ -1,8 +1,55 @@
-﻿<Window x:Class="LM.WpfClient.MainWindow"
+﻿<fluent:RibbonWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        xmlns:fluent="clr-namespace:Fluent;assembly=Fluent"
+        xmlns:ViewModel="clr-namespace:LM.WpfClient.ViewModel" x:Class="LM.WpfClient.MainWindow"
+        Title="Test Window" Width="500" Height="250">
+    <fluent:RibbonWindow.Resources>
+        <ResourceDictionary  Source="pack://application:,,,/Fluent;Component/Themes/Office2010/Black.xaml" />
+    </fluent:RibbonWindow.Resources>
+
+    <fluent:RibbonWindow.DataContext>
+        <ViewModel:MainViewModel/>
+    </fluent:RibbonWindow.DataContext>
+
+    <fluent:Ribbon Title="Home Ribbon">
+        <fluent:Ribbon.QuickAccessItems>
+            <fluent:QuickAccessMenuItem IsChecked="true">
+                <fluent:Button Header="Pink" Icon="Images\ico_settings.png" />
+            </fluent:QuickAccessMenuItem>
+            <!--You Can Just Bind with Any Control-->
+            <fluent:QuickAccessMenuItem Target="{Binding ElementName=buttonGreen}"/>
+
+        </fluent:Ribbon.QuickAccessItems>
+
+        <fluent:Ribbon.Menu>
+            <fluent:Backstage>
+                <fluent:BackstageTabControl>
+                    <fluent:BackstageTabItem Header="New"/>
+                    <fluent:BackstageTabItem Header="Print"/>
+                    <fluent:Button Header="Blue" Icon="Images\Blue.png"/>
+                </fluent:BackstageTabControl>
+            </fluent:Backstage>
+        </fluent:Ribbon.Menu>
+
+        <fluent:RibbonTabItem Header="Employee">
+
+            <fluent:RibbonGroupBox Header="Manage">
+                <Image Source="Images/ico_employee_large.png" Stretch="None" Margin="5"/>
+                <fluent:Button Size="Middle" Header="Add" Icon="/LM.WpfClient;component/Images/ico_add_small.png" fluent:KeyTip.Keys="EA"  
+                               Command="{Binding AddEmployee}"/>
+                <fluent:Button Size="Middle" Header="Edit" Icon="/LM.WpfClient;component/Images/ico_edit_small.png"  fluent:KeyTip.Keys="EE" />
+                <fluent:Button Size="Middle" Header="Remove" Icon="/LM.WpfClient;component/Images/ico_remove_small.png" fluent:KeyTip.Keys="ED" />
+            </fluent:RibbonGroupBox>
+            <fluent:RibbonGroupBox Header="View">
+                <fluent:Button Size="Middle"  Header="List"
+					Icon="/LM.WpfClient;component/Images/ico_listall_small.png" fluent:KeyTip.Keys="LA"  />
+                <fluent:Button Size="Middle" Header="Find" Icon="/LM.WpfClient;component/Images/ico_findemployee_small.png" fluent:KeyTip.Keys="LA"  />
+
+            </fluent:RibbonGroupBox>
+        </fluent:RibbonTabItem>
+
+    </fluent:Ribbon>
+</fluent:RibbonWindow>
+	
+	

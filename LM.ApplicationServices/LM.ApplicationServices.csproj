@@ -40,10 +40,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IEmployeeService.cs" />
+    <Compile Include="EmployeeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceModel\EmployeeSModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ServiceModel\" />
+    <ProjectReference Include="..\LM.Data.EF\LM.Data.EF.csproj">
+      <Project>{7043A305-809C-4346-841C-4C8ED45E646A}</Project>
+      <Name>LM.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LM.Data\LM.Data.csproj">
+      <Project>{9B022C8D-8176-430F-A6B7-A347A75DC4F5}</Project>
+      <Name>LM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LM.Framework\LM.Framework.csproj">
+      <Project>{BF63F401-245A-44C8-AF1A-F2B58F422B4C}</Project>
+      <Name>LM.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

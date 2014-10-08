@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LM.ApplicationServices.ServiceModel;
 
 namespace LM.ApplicationServices.Contracts
 {
     public interface IEmployeeService
     {
-        void AddEmployee();
+        int AddEmployee(EmployeeSModel model);
+
+        bool DeleteEmployee(int employeeId);
     }
 }
