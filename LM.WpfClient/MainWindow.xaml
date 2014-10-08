@@ -12,44 +12,50 @@
         <ViewModel:MainViewModel/>
     </fluent:RibbonWindow.DataContext>
 
-    <fluent:Ribbon Title="Home Ribbon">
-        <fluent:Ribbon.QuickAccessItems>
-            <fluent:QuickAccessMenuItem IsChecked="true">
-                <fluent:Button Header="Pink" Icon="Images\ico_settings.png" />
-            </fluent:QuickAccessMenuItem>
-            <!--You Can Just Bind with Any Control-->
-            <fluent:QuickAccessMenuItem Target="{Binding ElementName=buttonGreen}"/>
+    <DockPanel LastChildFill="True">
+        <fluent:Ribbon Title="Home Ribbon" DockPanel.Dock="Top">
+            <fluent:Ribbon.QuickAccessItems>
+                <fluent:QuickAccessMenuItem IsChecked="true">
+                    <fluent:Button Header="Pink" Icon="Images\ico_settings.png" />
+                </fluent:QuickAccessMenuItem>
+                <!--You Can Just Bind with Any Control-->
+                <fluent:QuickAccessMenuItem Target="{Binding ElementName=buttonGreen}"/>
 
-        </fluent:Ribbon.QuickAccessItems>
+            </fluent:Ribbon.QuickAccessItems>
 
-        <fluent:Ribbon.Menu>
-            <fluent:Backstage>
-                <fluent:BackstageTabControl>
-                    <fluent:BackstageTabItem Header="New"/>
-                    <fluent:BackstageTabItem Header="Print"/>
-                    <fluent:Button Header="Blue" Icon="Images\Blue.png"/>
-                </fluent:BackstageTabControl>
-            </fluent:Backstage>
-        </fluent:Ribbon.Menu>
+            <fluent:Ribbon.Menu>
+                <fluent:Backstage>
+                    <fluent:BackstageTabControl>
+                        <fluent:BackstageTabItem Header="New"/>
+                        <fluent:BackstageTabItem Header="Print"/>
+                        <fluent:Button Header="Blue" Icon="Images\Blue.png"/>
+                    </fluent:BackstageTabControl>
+                </fluent:Backstage>
+            </fluent:Ribbon.Menu>
 
-        <fluent:RibbonTabItem Header="Employee">
+            <fluent:RibbonTabItem Header="Employee">
 
-            <fluent:RibbonGroupBox Header="Manage">
-                <Image Source="Images/ico_employee_large.png" Stretch="None" Margin="5"/>
-                <fluent:Button Size="Middle" Header="Add" Icon="/LM.WpfClient;component/Images/ico_add_small.png" fluent:KeyTip.Keys="EA"  
+                <fluent:RibbonGroupBox Header="Manage">
+                    <Image Source="Images/ico_employee_large.png" Stretch="None" Margin="5"/>
+                    <fluent:Button Size="Middle" Header="Add" Icon="/LM.WpfClient;component/Images/ico_add_small.png" fluent:KeyTip.Keys="EA"  
                                Command="{Binding AddEmployee}"/>
-                <fluent:Button Size="Middle" Header="Edit" Icon="/LM.WpfClient;component/Images/ico_edit_small.png"  fluent:KeyTip.Keys="EE" />
-                <fluent:Button Size="Middle" Header="Remove" Icon="/LM.WpfClient;component/Images/ico_remove_small.png" fluent:KeyTip.Keys="ED" />
-            </fluent:RibbonGroupBox>
-            <fluent:RibbonGroupBox Header="View">
-                <fluent:Button Size="Middle"  Header="List"
+                    <fluent:Button Size="Middle" Header="Edit" Icon="/LM.WpfClient;component/Images/ico_edit_small.png"  fluent:KeyTip.Keys="EE" 
+                                    Command="{Binding EditEmployee}"/>
+                    <fluent:Button Size="Middle" Header="Remove" Icon="/LM.WpfClient;component/Images/ico_remove_small.png" fluent:KeyTip.Keys="ED" />
+                </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="View">
+                    <fluent:Button Size="Middle"  Header="List"
 					Icon="/LM.WpfClient;component/Images/ico_listall_small.png" fluent:KeyTip.Keys="LA"  />
-                <fluent:Button Size="Middle" Header="Find" Icon="/LM.WpfClient;component/Images/ico_findemployee_small.png" fluent:KeyTip.Keys="LA"  />
+                    <fluent:Button Size="Middle" Header="Find" Icon="/LM.WpfClient;component/Images/ico_findemployee_small.png" fluent:KeyTip.Keys="LA"  />
 
-            </fluent:RibbonGroupBox>
-        </fluent:RibbonTabItem>
+                </fluent:RibbonGroupBox>
+            </fluent:RibbonTabItem>
 
-    </fluent:Ribbon>
+        </fluent:Ribbon>
+        
+        <Frame Name="FarmeContent" Source="{Binding NavigationSource}" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
+   
 </fluent:RibbonWindow>
 	
 	
