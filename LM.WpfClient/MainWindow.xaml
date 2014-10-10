@@ -3,16 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:fluent="clr-namespace:Fluent;assembly=Fluent"
         xmlns:ViewModel="clr-namespace:LM.WpfClient.ViewModel" x:Class="LM.WpfClient.MainWindow"
-        Title="Test Window" Width="500" Height="250">
-    <fluent:RibbonWindow.Resources>
-        <ResourceDictionary  Source="pack://application:,,,/Fluent;Component/Themes/Office2010/Black.xaml" />
+        Title="Test Window" Width="500" Height="250" WindowState="Maximized" Icon="Images/ico_Main.png">
+    
+    <fluent:RibbonWindow.Resources>        
+        <ResourceDictionary  Source="pack://application:,,,/Fluent;Component/Themes/Office2010/black.xaml" />        
     </fluent:RibbonWindow.Resources>
-
+        
     <fluent:RibbonWindow.DataContext>
         <ViewModel:MainViewModel/>
     </fluent:RibbonWindow.DataContext>
-
+    
     <DockPanel LastChildFill="True">
+        
         <fluent:Ribbon Title="Home Ribbon" DockPanel.Dock="Top">
             <fluent:Ribbon.QuickAccessItems>
                 <fluent:QuickAccessMenuItem IsChecked="true">
@@ -47,15 +49,22 @@
                     <fluent:Button Size="Middle"  Header="List"
 					Icon="/LM.WpfClient;component/Images/ico_listall_small.png" fluent:KeyTip.Keys="LA"  />
                     <fluent:Button Size="Middle" Header="Find" Icon="/LM.WpfClient;component/Images/ico_findemployee_small.png" fluent:KeyTip.Keys="LA"  />
-
                 </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
 
         </fluent:Ribbon>
-        
+
+        <fluent:StatusBar DockPanel.Dock="Bottom">
+            <fluent:StatusBarItem Title="Date" HorizontalAlignment="Right">
+                <TextBlock VerticalAlignment="Bottom" Foreground="White" Height = "Auto" Name="lblDate" Text="{Binding AutoTimer}" />
+            </fluent:StatusBarItem>
+        </fluent:StatusBar>
+
         <Frame Name="FarmeContent" Source="{Binding NavigationSource}" Navigated="Frame_Navigated" NavigationUIVisibility="Hidden"/>
+
     </DockPanel>
    
 </fluent:RibbonWindow>
+    
 	
 	
